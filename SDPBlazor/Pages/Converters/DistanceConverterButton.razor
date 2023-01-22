@@ -1,0 +1,23 @@
+﻿<h3>DistanceConverter</h3>
+
+<label for="meter" class="form-label">Meters</label>
+<input type="number" class="form-control" id="meter" placeholder="Meters..." @bind="_meters" @bind:event="oninput" />
+<button type="submit" class="btn btn-primary mt-4" @onclick="ConvertDistance">
+	<span class="oi oi oi-clock me-2" aria-hidden="true"></span>Convert
+</button>
+@if (_inches != null)
+{
+		<div class="mt-4">
+			<span>In @_meters m equal to @_inches inches</span>
+		</div>
+}
+
+@code {
+	double? _inches = null;
+	double? _meters = null;
+
+	private void ConvertDistance()
+	{
+		_inches = _meters / 0.0254d;
+	}
+}
